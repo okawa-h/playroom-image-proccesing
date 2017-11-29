@@ -1,0 +1,157 @@
+@charset "UTF-8";
+
+* {
+	margin:0;
+	padding:0;
+}
+
+html {
+	overflow-y:scroll;
+	word-break:break-all;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-size:100%;
+	font-weight:normal;
+}
+
+ol,ul {
+	list-style:none;
+}
+
+blockquote, q {
+	quotes:none;
+}
+
+:focus {
+	outline:0;
+}
+
+ins {
+	text-decoration:none;
+}
+
+del {
+	text-decoration:line-through;
+}
+
+table {
+	
+}
+
+img {
+	border:0;
+	vertical-align:bottom;
+}
+
+address {
+	font-style:normal;
+}
+
+body {
+	background:#fff;
+	color:#000;
+	font-size:14px;
+	font-family:"Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+	line-height:1.6;
+	letter-spacing:.5px;
+	word-break:normal;
+}
+
+strong {
+	font-weight:bold;
+}
+
+em {
+	font-style:normal;
+}
+
+a {
+	color:#000;
+	text-decoration:none;
+}
+
+a:hover {
+	color:#333;
+	text-decoration:none;
+}
+
+section,div,ul,dl,ol {
+	zoom:1;
+}
+
+section:after,
+div:after,
+ul:after,
+dl:after,
+ol:after {
+	content:"";
+	display: block;
+	clear:both;
+	visibility:hidden;
+}
+
+
+#all {
+	position: relative;
+	width: 100%;
+	height: 100vh;
+	background-color: #273547;
+}
+
+canvas {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+}
+
+#file-controller {
+	position: absolute;
+	left: 0;
+	top: 20px;
+	width: 100%;
+	text-align: center;
+	z-index: 2;
+}
+
+	#file-controller li {
+		display: inline-block;
+		margin: 0 1.5em;
+		padding: .5em 1em;
+		border-radius: 3px;
+		background-color: #efefef;
+		font-size: 12px;
+		cursor: pointer;
+	}
+
+	#file-controller li:hover {
+	}
+
+#processing-controller {
+	position: absolute;
+	left: 0;
+	bottom: 20px;
+	width: 100%;
+	text-align: center;
+	z-index: 2;
+}
+
+	#processing-controller li {
+		display: inline-block;
+		margin: 0 1.5em;
+		padding: .5em 1em;
+		border-radius: 3px;
+		background-color: #efefef;
+		font-size: 12px;
+		cursor: pointer;
+	}
+
+	#processing-controller li:hover {
+	}
+
+
+
+
+
+
