@@ -11,7 +11,7 @@ class Main {
 
 	public static function main():Void {
 
-		new JQuery('document').ready(init);
+		new JQuery(Browser.document).ready(init);
 
 	}
 
@@ -22,14 +22,14 @@ class Main {
 
 		_jWindow = new JQuery(Browser.window);
 		_jAll    = new JQuery('#all');
-		
+
 		CanvasManager.init();
 		_jWindow.on({ 'resize':onResize }).trigger('resize');
 
 	}
 
 		/* =======================================================================
-			Constractor
+			Trigger
 		========================================================================== */
 		public static function trigger(name:String):Void {
 

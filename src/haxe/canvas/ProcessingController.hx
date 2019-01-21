@@ -6,8 +6,8 @@ import jp.okawa.js.canvas.ImageProcessing;
 
 class ProcessingController {
 
-	private static var _jParent : JQuery;
-	private static var PROCESSING_LIST : Map<String,Dynamic> = [
+	private static var _jParent:JQuery;
+	private static var PROCESSING_LIST:Map<String,Dynamic> = [
 
 		'Default'    => function(canvas){},
 		'Dot'        => ImageProcessing.drawDot,
@@ -52,7 +52,7 @@ class ProcessingController {
 	private static function onClick(event:Event):Void {
 
 		CanvasManager.redraw();
-		var processing : String = new JQuery(event.currentTarget).data('processing');
+		var processing:String = new JQuery(event.currentTarget).data('processing');
 		PROCESSING_LIST[processing](CanvasManager.getCanvas());
 
 	}

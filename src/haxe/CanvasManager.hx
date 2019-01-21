@@ -4,17 +4,15 @@ import js.html.CanvasElement;
 import js.html.CanvasRenderingContext2D;
 import js.html.Image;
 import js.jquery.JQuery;
-import js.jquery.Event;
 import canvas.ProcessingController;
-import jp.okawa.js.canvas.ImageProcessing;
 
 using js.Browser;
 
 class CanvasManager {
 
-	private static var _jCanvas : JQuery;
-	private static var _canvas  : CanvasElement;
-	private static var _context : CanvasRenderingContext2D;
+	private static var _jCanvas:JQuery;
+	private static var _canvas :CanvasElement;
+	private static var _context:CanvasRenderingContext2D;
 	private static inline var IMAGE_PATH : String = 'files/img/image.jpg';
 
 	/* =======================================================================
@@ -66,14 +64,14 @@ class CanvasManager {
 		========================================================================== */
 		public static function drawImage(src:String=IMAGE_PATH):Void {
 
-			var image : Image = new Image();
+			var image:Image = new Image();
 			image.onload = function(event) {
 
 				_jCanvas.off('redraw').on('redraw',function(event):Void {
 
 					clear();
-					var imageW : Int = image.width;
-					var imageH : Int = image.height;
+					var imageW:Int = image.width;
+					var imageH:Int = image.height;
 					_canvas.width  = imageW;
 					_canvas.height = imageH;
 					_context.drawImage(image, 0, 0, imageW, imageH, 0, 0, imageW, imageH);
@@ -101,8 +99,8 @@ class CanvasManager {
 	private static function setPosition(winW:Float,winH:Float):Void {
 
 		_jCanvas.css({
-			top  : (winH * .5) - (_jCanvas.height() * .5),
-			left : (winW * .5) - (_jCanvas.width() * .5)
+			top :(winH * .5) - (_jCanvas.height() * .5),
+			left:(winW * .5) - (_jCanvas.width() * .5)
 		});
 
 	}
