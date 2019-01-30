@@ -1,26 +1,25 @@
 package ;
 
+import js.Browser.document;
 import js.html.CanvasElement;
 import js.html.CanvasRenderingContext2D;
 import js.html.Image;
 import js.jquery.JQuery;
 import canvas.ProcessingController;
 
-using js.Browser;
-
 class CanvasManager {
 
 	private static var _jCanvas:JQuery;
 	private static var _canvas :CanvasElement;
 	private static var _context:CanvasRenderingContext2D;
-	private static inline var IMAGE_PATH : String = 'files/img/image.jpg';
+	private static inline var IMAGE_PATH:String = 'files/img/image.jpg';
 
 	/* =======================================================================
 		Constractor
 	========================================================================== */
 	public static function init():Void {
 
-		_canvas  = Browser.document.createCanvasElement();
+		_canvas  = document.createCanvasElement();
 		_jCanvas = new JQuery(_canvas);
 		_context = _canvas.getContext2d();
 

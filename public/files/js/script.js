@@ -117,48 +117,6 @@ Std.__name__ = true;
 Std.string = function(s) {
 	return js_Boot.__string_rec(s,"");
 };
-var haxe_IMap = function() { };
-haxe_IMap.__name__ = true;
-var haxe_ds_StringMap = function() {
-	this.h = { };
-};
-haxe_ds_StringMap.__name__ = true;
-haxe_ds_StringMap.__interfaces__ = [haxe_IMap];
-haxe_ds_StringMap.prototype = {
-	setReserved: function(key,value) {
-		if(this.rh == null) {
-			this.rh = { };
-		}
-		this.rh["$" + key] = value;
-	}
-	,getReserved: function(key) {
-		if(this.rh == null) {
-			return null;
-		} else {
-			return this.rh["$" + key];
-		}
-	}
-	,keys: function() {
-		return HxOverrides.iter(this.arrayKeys());
-	}
-	,arrayKeys: function() {
-		var out = [];
-		for( var key in this.h ) {
-		if(this.h.hasOwnProperty(key)) {
-			out.push(key);
-		}
-		}
-		if(this.rh != null) {
-			for( var key in this.rh ) {
-			if(key.charCodeAt(0) == 36) {
-				out.push(key.substr(1));
-			}
-			}
-		}
-		return out;
-	}
-	,__class__: haxe_ds_StringMap
-};
 var jp_okawa_js_canvas_ImageProcessing = function() { };
 jp_okawa_js_canvas_ImageProcessing.__name__ = true;
 jp_okawa_js_canvas_ImageProcessing.setQualify = function(canvas,scale) {
@@ -422,6 +380,48 @@ canvas_ProcessingController.onClick = function(event) {
 	var processing = $(event.currentTarget).data("processing");
 	var _this = canvas_ProcessingController.PROCESSING_LIST;
 	(__map_reserved[processing] != null ? _this.getReserved(processing) : _this.h[processing])(CanvasManager.getCanvas());
+};
+var haxe_IMap = function() { };
+haxe_IMap.__name__ = true;
+var haxe_ds_StringMap = function() {
+	this.h = { };
+};
+haxe_ds_StringMap.__name__ = true;
+haxe_ds_StringMap.__interfaces__ = [haxe_IMap];
+haxe_ds_StringMap.prototype = {
+	setReserved: function(key,value) {
+		if(this.rh == null) {
+			this.rh = { };
+		}
+		this.rh["$" + key] = value;
+	}
+	,getReserved: function(key) {
+		if(this.rh == null) {
+			return null;
+		} else {
+			return this.rh["$" + key];
+		}
+	}
+	,keys: function() {
+		return HxOverrides.iter(this.arrayKeys());
+	}
+	,arrayKeys: function() {
+		var out = [];
+		for( var key in this.h ) {
+		if(this.h.hasOwnProperty(key)) {
+			out.push(key);
+		}
+		}
+		if(this.rh != null) {
+			for( var key in this.rh ) {
+			if(key.charCodeAt(0) == 36) {
+				out.push(key.substr(1));
+			}
+			}
+		}
+		return out;
+	}
+	,__class__: haxe_ds_StringMap
 };
 var js__$Boot_HaxeError = function(val) {
 	Error.call(this);
@@ -736,6 +736,37 @@ js_html_compat_Uint8Array._subarray = function(start,end) {
 	a.byteOffset = start;
 	return a;
 };
+var js_jquery_JqEltsIterator = function(j) {
+	this.i = 0;
+	this.j = j;
+};
+js_jquery_JqEltsIterator.__name__ = true;
+js_jquery_JqEltsIterator.prototype = {
+	hasNext: function() {
+		return this.i < this.j.length;
+	}
+	,next: function() {
+		return $(this.j[this.i++]);
+	}
+	,__class__: js_jquery_JqEltsIterator
+};
+var js_jquery_JqIterator = function(j) {
+	this.i = 0;
+	this.j = j;
+};
+js_jquery_JqIterator.__name__ = true;
+js_jquery_JqIterator.prototype = {
+	hasNext: function() {
+		return this.i < this.j.length;
+	}
+	,next: function() {
+		return this.j[this.i++];
+	}
+	,__class__: js_jquery_JqIterator
+};
+function $iterator(o) { if( o instanceof Array ) return function() { return HxOverrides.iter(o); }; return typeof(o.iterator) == 'function' ? $bind(o,o.iterator) : o.iterator; }
+var $_, $fid = 0;
+function $bind(o,m) { if( m == null ) return null; if( m.__id__ == null ) m.__id__ = $fid++; var f; if( o.hx__closures__ == null ) o.hx__closures__ = {}; else f = o.hx__closures__[m.__id__]; if( f == null ) { f = function(){ return f.method.apply(f.scope, arguments); }; f.scope = o; f.method = m; o.hx__closures__[m.__id__] = f; } return f; }
 String.prototype.__class__ = String;
 String.__name__ = true;
 Array.__name__ = true;
@@ -753,6 +784,18 @@ if(ArrayBuffer.prototype.slice == null) {
 	ArrayBuffer.prototype.slice = js_html_compat_ArrayBuffer.sliceImpl;
 }
 var Uint8Array = $global.Uint8Array || js_html_compat_Uint8Array._new;
+var typeofJQuery = typeof($);
+if(typeofJQuery != "undefined" && $.fn != null) {
+	$.fn.elements = function() {
+		return new js_jquery_JqEltsIterator(this);
+	};
+}
+var typeofJQuery = typeof($);
+if(typeofJQuery != "undefined" && $.fn != null) {
+	$.fn.iterator = function() {
+		return new js_jquery_JqIterator(this);
+	};
+}
 CanvasManager.IMAGE_PATH = "files/img/image.jpg";
 canvas_ProcessingController.PROCESSING_LIST = (function($this) {
 	var $r;

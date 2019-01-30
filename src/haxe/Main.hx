@@ -6,8 +6,8 @@ import js.jquery.Event;
 
 class Main {
 
-	private static var _jWindow : JQuery;
-	private static var _jAll : JQuery;
+	private static var _jWindow:JQuery;
+	private static var _jAll:JQuery;
 
 	public static function main():Void {
 
@@ -56,6 +56,5 @@ class Main {
 			_jAll.append(jTarget);
 
 		}
-
 
 }
